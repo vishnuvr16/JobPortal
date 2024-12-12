@@ -41,7 +41,7 @@ const JobPortal = () => {
         }
 
         const allJobs = await response.json();
-        setJobs(allJobs.jobs);
+        setJobs(allJobs);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching jobs:", error);

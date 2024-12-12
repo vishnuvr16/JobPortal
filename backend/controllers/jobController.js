@@ -83,46 +83,56 @@ export const createJob = async (req, res) => {
   }
 };
 
-export const getAllJobs = async (req, res) => {
+// export const getAllJobs = async (req, res) => {
+//   try {
+//     const { 
+//       search, 
+//       category, 
+//       location, 
+//       type, 
+//       page = 1, 
+//       limit = 10 
+//     } = req.query;
+
+//     const query = {};
+    
+//     if (search) {
+//       query.$or = [
+//         { title: { $regex: search, $options: 'i' } },
+//         { company: { $regex: search, $options: 'i' } }
+//       ];
+//     }
+    
+//     if (category) query.category = category;
+//     if (location) query.location = { $regex: location, $options: 'i' };
+//     if (type) query.type = type;
+
+//     const jobs = await Job.find(query)
+//       .limit(limit * 1)
+//       .skip((page - 1) * limit)
+//       .sort({ createdAt: -1 });
+
+//     const total = await Job.countDocuments(query);
+
+//     res.json({
+//       jobs,
+//       totalPages: Math.ceil(total / limit),
+//       currentPage: page
+//     });
+//   } catch (error) {
+//     res.status(500).json({ message: 'Error fetching jobs', error: error.message });
+//   }
+// };
+
+export const getAllJobs = async (req,res) => {
   try {
-    const { 
-      search, 
-      category, 
-      location, 
-      type, 
-      page = 1, 
-      limit = 10 
-    } = req.query;
+    const jobs = await Job.find();
 
-    const query = {};
-    
-    if (search) {
-      query.$or = [
-        { title: { $regex: search, $options: 'i' } },
-        { company: { $regex: search, $options: 'i' } }
-      ];
-    }
-    
-    if (category) query.category = category;
-    if (location) query.location = { $regex: location, $options: 'i' };
-    if (type) query.type = type;
-
-    const jobs = await Job.find(query)
-      .limit(limit * 1)
-      .skip((page - 1) * limit)
-      .sort({ createdAt: -1 });
-
-    const total = await Job.countDocuments(query);
-
-    res.json({
-      jobs,
-      totalPages: Math.ceil(total / limit),
-      currentPage: page
-    });
+    res.json(jobs)
   } catch (error) {
-    res.status(500).json({ message: 'Error fetching jobs', error: error.message });
+    
   }
-};
+}
 
 export const getJobById = async (req, res) => {
   try {
