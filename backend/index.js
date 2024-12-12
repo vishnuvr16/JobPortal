@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 import cors from "cors"
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
-import authRoutes from "../routes/authRoutes.js"
-import jobRoutes from "../routes/jobRoutes.js"
+import authRoutes from "./routes/authRoutes.js"
+import jobRoutes from "./routes/jobRoutes.js"
 
 const app = express();
 dotenv.config();
