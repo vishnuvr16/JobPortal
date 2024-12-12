@@ -108,7 +108,7 @@ const JobDetailsPage = () => {
               </div>
             </div>
             {/* check if user is admin */}
-            {user.role === 'admin' ? 
+            {user?.role === 'admin' ? 
               <Link
                 to={`/jobs/${job._id}/applicants`}
                 className="bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition mt-4 md:mt-0 flex items-center" >
@@ -117,7 +117,7 @@ const JobDetailsPage = () => {
               :
               (
                 // check if user is already applied to the job
-                job.applicants.some(applicant => applicant.user === user.id) ? (
+                job.applicants.some(applicant => applicant.user === user?.id) ? (
               <button
                 className="bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition mt-4 md:mt-0 flex items-center" >
                 <Send className="mr-2" /> Already Applied
@@ -259,7 +259,7 @@ const JobDetailsPage = () => {
                     <input
                       type="tel"
                       name="phone"
-                      value={user.phone || applicationForm.phone}
+                      value={user?.phone || applicationForm.phone}
                       onChange={handleInputChange}
                       className="w-full p-3 border rounded-lg"
                       placeholder="Enter your phone number"
