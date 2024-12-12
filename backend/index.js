@@ -26,6 +26,10 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Routes
+app.get("/",(req,res)=>{
+  res.json("hello")
+})
+
 app.use('/api', routes);
 
 //! Error handling middleware
