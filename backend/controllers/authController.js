@@ -33,11 +33,12 @@ export const register = async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    res.cookie('token',token ,{
-      httpOnly: true,
-      sameSite: 'lax',
-      maxAge: 24*60*60*1000
-    })
+    res.cookie('token', token, {
+      httpOnly: true, 
+      secure: process.env.NODE_ENV === 'production', 
+      sameSite: 'strict',
+  }).json({ message: 'Logged in successfully' });
+  
 
     res.status(201).json({ token, user: { id: user._id, name: user.fullName,email: user.email, role: 'candidate' } });
   } catch (error) {
@@ -68,11 +69,12 @@ export const login = async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    res.cookie('token',token ,{
-      httpOnly: true,
-      sameSite: 'lax',
-      maxAge: 24*60*60*1000
-    })
+    res.cookie('token', token, {
+      httpOnly: true, 
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict', 
+  });
+  
 
     res.json({ token, user: { id: user._id, name: user.fullName,email: user.email, role: user.role } });
   } catch (error) {
@@ -84,7 +86,7 @@ export const logout = async (req,res) =>{
   res.cookie('token','',{
     httpOnly: true,
     expires: new Date(0),
-    sameSite: 'lax',
+    sameSite: 'strict',
   })
 
   res.status(200).json({message: "Logged out successfully"})

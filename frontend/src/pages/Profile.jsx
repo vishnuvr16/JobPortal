@@ -60,7 +60,6 @@ const ProfilePage = () => {
 
         setUser(profileData);
         setApplications(applicationsData);
-        console.log("applicationsData",applicationsData)
         // Initialize profile data for editing
         setProfileData({
           fullName: profileData.fullName,
