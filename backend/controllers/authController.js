@@ -37,7 +37,7 @@ export const register = async (req, res) => {
       httpOnly: true, 
       secure: process.env.NODE_ENV === 'production', 
       sameSite: 'strict',
-  }).json({ message: 'Logged in successfully' });
+  })
   
 
     res.status(201).json({ token, user: { id: user._id, name: user.fullName,email: user.email, role: 'candidate' } });

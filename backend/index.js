@@ -26,10 +26,6 @@ const startServer = async () => {
     app.use(cookieParser());
 
     // Routes
-    app.get("/", (req, res) => {
-      res.json("hello");
-    });
-
     app.use('/api/auth', authRoutes);
     app.use('/api/jobs', jobRoutes);
 
