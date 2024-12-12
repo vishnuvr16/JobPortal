@@ -20,14 +20,14 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isAuthenticated = true;
-      Cookies.set("token",action.payload.token,{expires: 7})
+      // Cookies.set("token",action.payload.token,{expires: 7})
     },
     // *logout
     logoutAction: (state, action) => {
       state.user = null;
       state.token = null;
       state.isAuthenticated = false;
-      Cookies.remove("token")
+      // Cookies.remove("token")
     },
   },
 });

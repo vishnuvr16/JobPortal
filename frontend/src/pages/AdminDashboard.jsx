@@ -33,7 +33,7 @@ const AdminDashboard = () => {
            'Content-Type': 'application/json',
           },
         });
-
+        
         if (!response.ok) {
           throw new Error(`Failed to fetch jobs: ${response.statusText}`);
         }

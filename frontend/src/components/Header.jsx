@@ -350,6 +350,12 @@ const Header = () => {
                   >
                     <User className="mr-2 inline-block" /> Profile
                   </Link>
+                  <button 
+                    onClick={handleLogout}
+                    className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+                  >
+                    <LogOutIcon className="mr-2 inline-block" /> Logout
+                  </button>
                   {user?.role === 'admin' && (
                     <Link to="/admin"
                     className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">
