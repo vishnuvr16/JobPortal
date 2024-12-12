@@ -3,7 +3,8 @@ import dotenv from "dotenv";
 import cors from "cors"
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
-import routes from "./routes/index.js"
+import authRoutes from "../routes/authRoutes.js"
+import jobRoutes from "../routes/jobRoutes.js"
 
 const app = express();
 dotenv.config();
@@ -30,7 +31,8 @@ app.get("/",(req,res)=>{
   res.json("hello")
 })
 
-app.use('/api', routes);
+app.use('/api/auth',authRoutes)
+app.use('/api/jobs', jobRoutes);
 
 //! Error handling middleware
 app.use((err, req, res, next) => {
