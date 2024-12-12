@@ -190,7 +190,7 @@ This job portal application demonstrates full-stack development capabilities by 
 
 ---
 
-**Deployment**
+## Deployment
    - Frontend: [Vercel-frontend Deployment Link](https://job-portal-client-eosin.vercel.app/)
    - Backend: [Vercel-backend Deployment Link](https://job-portal-five-sage.vercel.app/)
 
