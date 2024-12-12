@@ -22,8 +22,8 @@ const JobDetailsPage = () => {
   const [isApplying, setIsApplying] = useState(false);
   const {user} = useSelector(state => state.auth)
   const [applicationForm, setApplicationForm] = useState({
-    fullName: user.name,
-    email: user.email,
+    fullName: user.name || '',
+    email: user.email || '',
     phone: user.phone || '',
     resumeUrl: '',
     coverLetter: ''
