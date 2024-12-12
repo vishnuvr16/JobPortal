@@ -221,8 +221,7 @@ const AdminDashboard = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {applications
-                    .filter(app => app.jobId === selectedJob)
+                  {applications?.filter(app => app.jobId === selectedJob)
                     .map((application) => (
                       <tr 
                         key={application.id} 
