@@ -30,7 +30,7 @@ const AdminDashboard = () => {
           method: summaryApi.getJobs.method,
           credentials: "include",
           headers: {
-            'Content-Type': 'application/json',
+           'Content-Type': 'application/json',
           },
         });
 

@@ -124,15 +124,19 @@ export const createJob = async (req, res) => {
 //   }
 // };
 
-export const getAllJobs = async (req,res) => {
+export const getAllJobs = async (req, res) => {
   try {
-    const jobs = await Job.find();
-
-    res.json(jobs)
+    const jobs = await Job.find({});
+    res.status(200).json(jobs);
   } catch (error) {
-    
+    console.error("Error fetching jobs:", error.message);
+    res.status(500).json({
+      success: false,
+      message: "Server error. Could not fetch jobs."
+    });
   }
-}
+};
+
 
 export const getJobById = async (req, res) => {
   try {
