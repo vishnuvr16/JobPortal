@@ -342,7 +342,22 @@ const Header = () => {
               ))}
               
               {/* Mobile Authentication */}
-              {!user && (
+              {user ? (
+                <div className='space-y-3 pt-4 border-t'>
+                  <Link 
+                    to="/me"
+                    className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+                  >
+                    <User className="mr-2 inline-block" /> Profile
+                  </Link>
+                  {user?.role === 'admin' && (
+                    <Link to="/admin"
+                    className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">
+                      Admin
+                    </Link>
+                  )}
+                </div>
+              ) : (
                 <div className="space-y-3 pt-4 border-t">
                   <button 
                     onClick={() => setModalType('login')}
