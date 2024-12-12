@@ -39,7 +39,7 @@ const AdminDashboard = () => {
         }
 
         const allJobs = await response.json();
-        setJobs(allJobs.jobs);
+        setJobs(allJobs);
       } catch (error) {
         console.error("Error fetching jobs:", error);
       }
@@ -48,7 +48,7 @@ const AdminDashboard = () => {
     getJobs();
   }, []);
 
-  const filteredJobs = jobs.filter(job => 
+  const filteredJobs = jobs?.filter(job => 
     job.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
     (statusFilter === '' || job.status === statusFilter)
   );
