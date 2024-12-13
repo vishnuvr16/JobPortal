@@ -109,11 +109,20 @@ const JobDetailsPage = () => {
             </div>
             {/* check if user is admin */}
             {user?.role === 'admin' ? 
-              <Link
-                to={`/jobs/${job._id}/applicants`}
-                className="bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition mt-4 md:mt-0 flex items-center" >
-                <Send className="mr-2" /> View Applicants
-              </Link> 
+             <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 mt-4">
+                <Link
+                  to={`/jobs/${job._id}/applicants`}
+                  className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition flex items-center justify-center text-sm md:text-base"
+                >
+                  <Send className="mr-2 text-lg" /> View Applicants
+                </Link>
+                <Link
+                  to={`/jobs/${job._id}/edit`}
+                  className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition flex items-center justify-center text-sm md:text-base"
+                 >
+                  <Send className="mr-2 text-lg" /> Edit Job
+                </Link>
+              </div>
               :
               (
                 // check if user is already applied to the job
