@@ -246,6 +246,19 @@ const AddEditJobPage = () => {
           </div>
           {errors.salaryMax && <p className="text-red-500 text-sm mt-1">{errors.salaryMax.message}</p>}
         </div>
+        <div>
+          <label className="block mb-2 text-gray-700 font-semibold">Application Deadline</label>
+          <div className="relative">
+            <input 
+              type="date" 
+              {...register('applicationDeadline')}
+              className="w-full p-3 pl-10 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300" 
+              placeholder="Maximum salary" 
+            />
+            <Calendar className="absolute left-3 top-3 text-gray-400" />
+          </div>
+          {errors.applicationDeadline && <p className="text-red-500 text-sm mt-1">{errors.applicationDeadline.message}</p>}
+        </div>
       </div>
       <div className="flex justify-between">
         <button 
