@@ -193,6 +193,8 @@ const Header = () => {
         }
       });
       dispatch(logoutAction());
+      setIsMenuOpen(false)
+      setIsProfileDropdownOpen(false)
       navigate('/');
     } catch (error) {
       console.error(error);
@@ -227,6 +229,7 @@ const Header = () => {
       <div className="py-1">
         <Link 
           to="/me" 
+          onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
           className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
         >
           <User className="mr-3" size={18} />
@@ -330,10 +333,12 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-white shadow-lg">
             <div className="px-4 py-4 space-y-3">
+              {/* menu items */}
               {menuItems.map((item) => (
                 <Link 
                   key={item.label}
                   to={item.path}
+                  onClick={()=> setIsMenuOpen(false)}
                   className="flex items-center space-x-3 text-gray-700 hover:text-blue-600"
                 >
                   {item.icon}
@@ -346,19 +351,21 @@ const Header = () => {
                 <div className='space-y-3 pt-4 border-t'>
                   <Link 
                     to="/me"
-                    className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="flex items-center space-x-3 text-gray-700 hover:text-blue-600"
                   >
                     <User className="mr-2 inline-block" /> Profile
                   </Link>
                   <button 
                     onClick={handleLogout}
-                    className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+                    className="flex items-center space-x-3 text-gray-700 hover:text-blue-600"
                   >
                     <LogOutIcon className="mr-2 inline-block" /> Logout
                   </button>
                   {user?.role === 'admin' && (
                     <Link to="/admin"
-                    className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">
+                    onClick={() => setIsMenuOpen(false)}
+                    className="flex items-center space-x-3 text-gray-700 hover:text-blue-600">
                       Admin
                     </Link>
                   )}
@@ -366,14 +373,20 @@ const Header = () => {
               ) : (
                 <div className="space-y-3 pt-4 border-t">
                   <button 
-                    onClick={() => setModalType('login')}
-                    className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+                    onClick={() => {
+                      setModalType('login')
+                      setIsMenuOpen(false)
+                    }}
+                    className="flex items-center space-x-3 text-gray-700 hover:text-blue-600"
                   >
                     <LogIn className="mr-2 inline-block" /> Login
                   </button>
                   <button 
-                    onClick={() => setModalType('register')}
-                    className="w-full border border-blue-600 text-blue-600 py-3 rounded-lg hover:bg-blue-50 transition"
+                    onClick={() => {
+                      setModalType('register')
+                      setIsMenuOpen(false)
+                    }}
+                    className="flex items-center space-x-3 text-gray-700 hover:text-blue-600"
                   >
                     <UserPlus className="mr-2 inline-block" /> Register
                   </button>
