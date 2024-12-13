@@ -9,7 +9,8 @@ import {
   ArrowLeft,
   CheckCircle,
   Calendar,
-  Users
+  Users,
+  Edit
 } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import {format} from "timeago.js"
@@ -118,9 +119,9 @@ const JobDetailsPage = () => {
                 </Link>
                 <Link
                   to={`/jobs/${job._id}/edit`}
-                  className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition flex items-center justify-center text-sm md:text-base"
+                  className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition flex items-center justify-center text-sm md:text-base"
                  >
-                  <Send className="mr-2 text-lg" /> Edit Job
+                  <Edit className="mr-2 text-lg" /> Edit Job
                 </Link>
               </div>
               :
