@@ -349,6 +349,13 @@ const Header = () => {
               {/* Mobile Authentication */}
               {user ? (
                 <div className='space-y-3 pt-4 border-t'>
+                  {user?.role === 'admin' && (
+                    <Link to="/admin"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="flex items-center space-x-3 text-gray-700 hover:text-blue-600">
+                      Admin
+                    </Link>
+                  )}
                   <Link 
                     to="/me"
                     onClick={() => setIsMenuOpen(false)}
@@ -362,13 +369,7 @@ const Header = () => {
                   >
                     <LogOutIcon className="mr-2 inline-block" /> Logout
                   </button>
-                  {user?.role === 'admin' && (
-                    <Link to="/admin"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="flex items-center space-x-3 text-gray-700 hover:text-blue-600">
-                      Admin
-                    </Link>
-                  )}
+                  
                 </div>
               ) : (
                 <div className="space-y-3 pt-4 border-t">

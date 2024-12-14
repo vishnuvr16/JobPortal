@@ -150,15 +150,7 @@ const JobPortalHome = () => {
                 Explore Jobs
                 <Briefcase className="ml-3" />
               </Link>
-              <Link 
-                to="/me" 
-                className="bg-transparent border-2 border-white text-white 
-                           px-8 py-3 rounded-lg hover:bg-white hover:text-purple-700 
-                           transition duration-300 font-semibold inline-flex items-center"
-              >
-                Create Profile
-                <Users className="ml-3" />
-              </Link>
+              
             </div>
           </motion.div>
           
